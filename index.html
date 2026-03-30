@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Distributed Systems - Practicals 5 to 8</title>
+    <style>
+        :root { --primary: #003366; --accent: #d32f2f; --bg: #f4f7f9; --card: #ffffff; }
+        body { font-family: 'Segoe UI', Tahoma, Arial, sans-serif; background: var(--bg); color: #333; line-height: 1.6; padding: 20px; }
+        .container { max-width: 950px; margin: auto; }
+        header { text-align: center; background: var(--primary); color: white; padding: 25px; border-radius: 10px; margin-bottom: 40px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .prac-section { background: var(--card); margin-bottom: 50px; padding: 40px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border-left: 10px solid var(--primary); page-break-after: always; }
+        h2 { color: var(--primary); border-bottom: 2px solid #eee; padding-bottom: 10px; margin-top: 0; font-size: 26px; }
+        h3 { color: var(--accent); margin-top: 25px; font-size: 18px; text-transform: uppercase; border-left: 4px solid var(--accent); padding-left: 12px; }
+        .pulses-box { background: #eef2f7; padding: 20px; border-radius: 8px; margin: 15px 0; font-size: 14px; border: 1px solid #ccd6e0; }
+        pre { background: #1e1e1e; color: #d4d4d4; padding: 20px; border-radius: 8px; overflow-x: auto; font-family: 'Consolas', monospace; font-size: 14px; border-left: 5px solid #4ec9b0; margin: 15px 0; }
+        .output-box { background: #f9f9f9; border: 2px dashed #003366; padding: 20px; margin: 15px 0; font-family: 'Courier New', monospace; font-weight: bold; color: #004d40; white-space: pre-wrap; font-size: 15px; }
+        .mcq-container { background: #fff9c4; padding: 20px; border-radius: 8px; margin-top: 20px; border: 1px solid #fbc02d; }
+        .mcq-q { margin-bottom: 10px; font-weight: bold; }
+        .ans { color: #2e7d32; text-decoration: underline; }
+        .res-container { background: #e8f5e9; padding: 20px; border-radius: 8px; margin-top: 25px; border-left: 5px solid #2e7d32; font-style: italic; }
+        footer { text-align: center; padding: 30px; color: #777; font-size: 12px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        
+        <p>| Practicals 5, 6, 7 & 8</p>
+    </header>
+<!-- PRACTICAL 1 -->
+    <div class="prac-section">
+        <h2>PRACTICAL-1</h2>
+        <p><strong>Aim:</strong> Use commands like hostname, ip a, ifconfig, ping, traceroute, and netstat.</p>
+        <h3>PULSES:</h3>
+        <div class="pulses-box">
+            1) Open Linux operating system (Ubuntu / Kali Linux).<br>
+            2) Login with a valid user account.<br>
+            3) Open Terminal (Ctrl + Alt + T).<br>
+            4) Ensure internet/network connection is available.<br>
+            5) Execute networking commands one by one.
+        </div>
+        <h3>Program:</h3>
+        <pre>
+# (i) Check System Hostname
+hostname
+
+# (ii) Detailed Interface and IP Info
+ip a
+
+# (iii) Legacy Network Interface Info
+ifconfig
+
+# (iv) Test connectivity to Google
+ping -c 4 google.com
+
+# (v) Trace the route to google.com
+traceroute google.com
+
+# (vi) Check active listening ports
+netstat -tuln</pre>
+        <h3>Output:</h3>
+        <div class="output-box">
+kali@linux:~$ hostname
+kali
+
+kali@linux:~$ ip a
+1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 state UNKNOWN
+2: eth0: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 state UP
+   inet 192.168.1.15/24 brd 192.168.1.255 scope global eth0
+
+kali@linux:~$ ping -c 4 google.com
+PING google.com (142.250.190.46) 56(84) bytes of data.
+64 bytes from 142.250.190.46: icmp_seq=1 ttl=115 time=14.2 ms
+...
+4 packets transmitted, 4 received, 0% packet loss
+
+kali@linux:~$ netstat -tuln
+Active Internet connections (only servers)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State      
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN     
+        </div>
+        <div class="mcq-container">
+            <div class="mcq-q">1. Which command is used to display the system's network name? <span class="ans">c) hostname</span></div>
+            <div class="mcq-q">2. Which command shows detailed interface info in modern Linux? <span class="ans">b) ip a</span></div>
+            <div class="mcq-q">3. What does the ping command test? <span class="ans">c) Connectivity between two hosts</span></div>
+            <div class="mcq-q">4. Which command displays the route taken by packets? <span class="ans">c) traceroute</span></div>
+            <div class="mcq-q">5. Which command is used to view active network connections? <span class="ans">c) netstat</span></div>
+        </div>
+        <div class="res-container"><strong>Resolution:</strong> In this practical, I learned to use core networking utilities to identify system parameters, verify connectivity, and monitor active services on a Linux system.</div>
+    </div>
+
+    <!-- PRACTICAL 2 -->
+    <div class="prac-section">
+        <h2>PRACTICAL-2</h2>
+        <p><strong>Aim:</strong> Implement a basic TCP client-server model using Python on Kali Linux.</p>
+        <h3>PULSES:</h3>
+        <div class="pulses-box">
+            1) Login with a valid user account. 2) Open Terminal (Ctrl+Alt+T). 3) Verify Python version using <code>python3 --version</code>. 4) Create server.py and client.py files. 5) Run server first, then execute client.
+        </div>
+        <h3>Program:</h3>
+        <pre>
+# --- server.py ---
+import socket
+server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+server.bind(('127.0.0.1', 5000))
+server.listen(1)
+print("Server is listening ...")
+conn, addr = server.accept()
+print("connected by", addr)
+data = conn.recv(1024).decode()
+print("Client message:", data)
+conn.send("hello from server".encode())
+conn.close()
+
+# --- client.py ---
+import socket
+client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+client.connect(('127.0.0.1', 5000))
+client.send("hello from client".encode())
+data = client.recv(1024).decode()
+print("server response:", data)
+client.close()</pre>
+        <h3>Output:</h3>
+        <div class="output-box">
+[Terminal 1] 
+kali@linux:~$ python3 server.py
+Server is listening ...
+connected by ('127.0.0.1', 48234)
+Client message: hello from client
+
+[Terminal 2]
+kali@linux:~$ python3 client.py
+server response: hello from server
+        </div>
+        <div class="mcq-container">
+            <div class="mcq-q">1. Which protocol is used in the given client-server program? <span class="ans">c) TCP</span></div>
+            <div class="mcq-q">2. Which function is used by the server to wait for client connections? <span class="ans">c) accept()</span></div>
+            <div class="mcq-q">3. Which address is 127.0.0.1 known as? <span class="ans">c) Loopback address</span></div>
+            <div class="mcq-q">4. Which socket type is used for TCP communication in Python? <span class="ans">c) SOCK_STREAM</span></div>
+        </div>
+        <div class="res-container"><strong>Resolution:</strong> Successfully implemented a TCP client-server application. I learned the sequence of socket operations (bind, listen, accept) required to establish reliable communication.</div>
+    </div>
+
+    <!-- PRACTICAL 3 -->
+    <div class="prac-section">
+        <h2>PRACTICAL-3</h2>
+        <p><strong>Aim:</strong> Simulate access, location, and replication transparency using shared directories and symbolic links.</p>
+        <h3>PULSES:</h3>
+        <div class="pulses-box">
+            1) Start Kali Linux. 2) Login with valid user. 3) Open Terminal. 4) Create required directories. 5) Use symbolic links (ln -s) to demonstrate transparency concepts. 6) Access files without knowing their actual location.
+        </div>
+        <h3>Program:</h3>
+        <pre>
+# Step 1: Create a resource at a specific location
+mkdir -p /tmp/server_node/data
+echo "Shared Resource Content" > /tmp/server_node/data/resource.txt
+
+# Step 2: Simulate Replication (creating a copy elsewhere)
+mkdir -p /tmp/backup_node
+cp /tmp/server_node/data/resource.txt /tmp/backup_node/replica.txt
+
+# Step 3: Simulate Location Transparency using a symbolic link
+# User accesses ~/my_data instead of the long /tmp/... path
+ln -s /tmp/server_node/data/resource.txt ~/my_data
+
+# Step 4: Access the file transparently
+cat ~/my_data</pre>
+        <h3>Output:</h3>
+        <div class="output-box">
+kali@linux:~$ cat ~/my_data
+Shared Resource Content
+(Accessed via virtual link without knowing the absolute physical path)
+        </div>
+        <div class="mcq-container">
+            <div class="mcq-q">1. Which Linux command is used to create a symbolic link? <span class="ans">c) ln -s</span></div>
+            <div class="mcq-q">2. Location transparency means: <span class="ans">c) File location can change without user noticing</span></div>
+            <div class="mcq-q">3. Replication transparency ensures: <span class="ans">c) Multiple copies exist but user sees one logical file</span></div>
+        </div>
+        <div class="res-container"><strong>Resolution:</strong> I learned that symbolic links effectively hide physical paths from the user, demonstrating transparency in distributed systems.</div>
+    </div>
+
+    <!-- PRACTICAL 4 -->
+    <div class="prac-section">
+        <h2>PRACTICAL-4</h2>
+        <p><strong>Aim:</strong> Implement IPC using pipes or message queues in Python/C on Kali Linux.</p>
+        <h3>PULSES:</h3>
+        <div class="pulses-box">
+            • Inter-Process Communication (IPC) • Pipes (Unidirectional) • Parent and Child process • os.pipe() and os.fork() • Parent writes data into the pipe, Child reads data from the pipe • Display received message.
+        </div>
+        <h3>Program:</h3>
+        <pre>
+import os
+
+# Create a unidirectional pipe
+read_end, write_end = os.pipe()
+
+# Create a child process
+pid = os.fork()
+
+if pid > 0:
+    # --- Parent Process ---
+    os.close(read_end) # Close reading end
+    msg = "Data from parent process via Pipe."
+    print("[Parent] Writing data into pipe...")
+    os.write(write_end, msg.encode())
+    os.close(write_end)
+else:
+    # --- Child Process ---
+    os.close(write_end) # Close writing end
+    print("[Child] Reading data from pipe...")
+    received = os.read(read_end, 1024).decode()
+    print("[Child Received]:", received)
+    os.close(read_end)</pre>
+        <h3>Output:</h3>
+        <div class="output-box">
+[Parent] Writing data into pipe...
+[Child] Reading data from pipe...
+[Child Received]: Data from parent process via Pipe.
+        </div>
+        <div class="mcq-container">
+            <div class="mcq-q">1. What does IPC stand for? <span class="ans">c) Inter Process Communication</span></div>
+            <div class="mcq-q">2. Which IPC mechanism allows communication only between related processes? <span class="ans">c) Pipe</span></div>
+            <div class="mcq-q">3. In Unix/Linux, a pipe is: <span class="ans">b) Unidirectional</span></div>
+        </div>
+        <div class="res-container"><strong>Resolution:</strong> I successfully established a communication channel between a parent and child process using a pipe, observing how data flows through system file descriptors.</div>
+    </div>
+    <!-- PRACTICAL 5 -->
+    <div class="prac-section">
+        <h2>PRACTICAL-5</h2>
+        <p><strong>Aim:</strong> Demonstrate synchronous and asynchronous communication.</p>
+        <h3>PULSES:</h3>
+        <div class="pulses-box">
+            • Inter-Process Communication (IPC)<br>
+            • Synchronous communication (Blocking) vs Asynchronous communication (Non-blocking)<br>
+            • Part A: Create pipe using os.pipe(), fork() process, write data, Child blocks and waits.<br>
+            • Part B: Set read end to non-blocking mode, Child continues even if data not available.
+        </div>
+        <h3>Program:</h3>
+        <pre>
+import os, fcntl, time
+
+# Setup a communication pipe
+read_end, write_end = os.pipe()
+
+# --- PART A: Synchronous / Blocking Simulation ---
+print("[SYNC] Child: Waiting for data (Blocking Read)...")
+# Note: In a real run, os.read() pauses the program until data exists
+# We simulate the delay to show the "waiting" state.
+time.sleep(1)
+os.write(write_end, b"Sync_Message")
+data = os.read(read_end, 100).decode()
+print(f"[SYNC] Child: Received -> {data}\n")
+
+# --- PART B: Asynchronous / Non-blocking Simulation ---
+# Change the file descriptor flags to Non-Blocking
+flags = fcntl.fcntl(read_end, fcntl.F_GETFL)
+fcntl.fcntl(read_end, fcntl.F_SETFL, flags | os.O_NONBLOCK)
+
+print("[ASYNC] Child: Checking for data immediately (Non-blocking)...")
+try:
+    data = os.read(read_end, 100) # This will not wait
+except BlockingIOError:
+    print("[ASYNC] Result: No data available. Child continues other execution tasks.")</pre>
+        <h3>Output:</h3>
+        <div class="output-box">
+[SYNC] Child: Waiting for data (Blocking Read)...
+(1 second pause observed)
+[SYNC] Child: Received -> Sync_Message
+
+[ASYNC] Child: Checking for data immediately (Non-blocking)...
+[ASYNC] Result: No data available. Child continues other execution tasks.</div>
+        <div class="mcq-container">
+            <div class="mcq-q">1. Synchronous communication means: <span class="ans">B) Receiver waits until message arrives</span></div>
+            <div class="mcq-q">2. Which type of communication is blocking in nature? <span class="ans">C) Synchronous</span></div>
+            <div class="mcq-q">3. In asynchronous communication, the receiver: <span class="ans">C) Continues execution without waiting</span></div>
+        </div>
+        <div class="res-container"><strong>Resolution:</strong> I successfully distinguished between blocking and non-blocking calls. Synchronous communication ensures data readiness before proceeding, while asynchronous allows process concurrency.</div>
+    </div>
+
+    <!-- PRACTICAL 6 -->
+    <div class="prac-section">
+        <h2>PRACTICAL-6</h2>
+        <p><strong>Aim:</strong> Implement a simple RPC system using Python (XML-RPC).</p>
+        <h3>PULSES:</h3>
+        <div class="pulses-box">
+            • Remote Procedure Call (RPC) Basics • Python xmlrpc library<br>
+            • Create RPC Server, Register functions (add, greet), and listen.<br>
+            • Create RPC Client, call remote functions, and receive output transparently.
+        </div>
+        <h3>Program:</h3>
+        <pre>
+# --- server.py ---
+from xmlrpc.server import SimpleXMLRPCServer
+
+def add_numbers(a, b): return a + b
+def say_hello(name): return f"Hello, {name}! This is the RPC Server."
+
+server = SimpleXMLRPCServer(("localhost", 8000))
+server.register_function(add_numbers, "add")
+server.register_function(say_hello, "greet")
+print("RPC Server is listening on port 8000...")
+server.serve_forever()
+
+# --- client.py ---
+import xmlrpc.client
+proxy = xmlrpc.client.ServerProxy("http://localhost:8000/")
+print(f"RPC Add Result (10+5): {proxy.add(10, 5)}")
+print(f"RPC Greet Result: {proxy.greet('Kali-User')}")</pre>
+        <h3>Output:</h3>
+        <div class="output-box">
+[Terminal 1] RPC Server is listening on port 8000...
+[Terminal 2] 
+RPC Add Result (10+5): 15
+RPC Greet Result: Hello, Kali-User! This is the RPC Server.</div>
+        <div class="mcq-container">
+            <div class="mcq-q">1. RPC stands for: <span class="ans">B) Remote Procedure Call</span></div>
+            <div class="mcq-q">2. Main advantage of RPC? <span class="ans">B) Hides network communication details</span></div>
+            <div class="mcq-q">3. XML-RPC uses which protocol? <span class="ans">C) HTTP</span></div>
+            <div class="mcq-q">4. Python class to create server? <span class="ans">C) SimpleXMLRPCServer</span></div>
+        </div>
+        <div class="res-container"><strong>Resolution:</strong> I learned to build a distributed application where the client executes code on a remote server as if it were a local function call.</div>
+    </div>
+
+    <!-- PRACTICAL 7 -->
+    <div class="prac-section">
+        <h2>PRACTICAL-7</h2>
+        <p><strong>Aim:</strong> Client remotely invokes procedures on server.</p>
+        <h3>PULSES:</h3>
+        <div class="pulses-box">
+            • Client calls a function executed on a remote server.<br>
+            • Client sends a request (procedure name + parameters).<br>
+            • Server executes procedure, results are sent back.<br>
+            • Transparency: Client does not need to know where/how procedure is executed.
+        </div>
+        <h3>Program:</h3>
+        <pre>
+# --- rpc_server_p7.py ---
+from xmlrpc.server import SimpleXMLRPCServer
+
+# Remote function to calculate factorial
+def find_factorial(n):
+    import math
+    return math.factorial(n)
+
+server = SimpleXMLRPCServer(("127.0.0.1", 9000))
+server.register_function(find_factorial, "remote_fact")
+print("Remote Invocation Server ready...")
+server.serve_forever()
+
+# --- rpc_client_p7.py ---
+import xmlrpc.client
+conn = xmlrpc.client.ServerProxy("http://127.0.0.1:9000/")
+number = 6
+print(f"Requesting remote factorial of {number}...")
+result = conn.remote_fact(number)
+print(f"Result returned from remote server: {result}")</pre>
+        <h3>Output:</h3>
+        <div class="output-box">
+[Server Console] Remote Invocation Server ready...
+[Client Console]
+Requesting remote factorial of 6...
+Result returned from remote server: 720</div>
+        <div class="mcq-container">
+            <div class="mcq-q">1. Client remotely invokes procedures refers to: <span class="ans">C) Remote Procedure Call</span></div>
+            <div class="mcq-q">2. Where does procedure execute in RPC? <span class="ans">C) Server machine</span></div>
+            <div class="mcq-q">3. Which architecture is used in RPC? <span class="ans">B) Client-Server</span></div>
+        </div>
+        <div class="res-container"><strong>Resolution:</strong> Observed the transparency property of RPC, where procedural calls are marshaled over the network and executed on a separate server host.</div>
+    </div>
+
+    <!-- PRACTICAL 8 -->
+    <div class="prac-section">
+        <h2>PRACTICAL-8</h2>
+        <p><strong>Aim:</strong> Simulate Cristian's and Berkeley algorithms using Python.</p>
+        <h3>PULSES:</h3>
+        <div class="pulses-box">
+            • Clock synchronization in distributed systems.<br>
+            • One machine acts as a time server.<br>
+            • Client requests time and adjusts its clock considering RTT delay.
+        </div>
+        <h3>Program:</h3>
+        <pre>
+import time
+
+def simulate_cristian_algorithm():
+    # Simulation: Time server is 1.5 seconds ahead
+    server_time = time.time() + 1.5 
+    
+    # Client sends request (Start Time)
+    t_start = time.time()
+    
+    # Network Round Trip Delay (RTT Simulation)
+    time.sleep(0.4) 
+    
+    # Client receives response (End Time)
+    t_end = time.time()
+    rtt = t_end - t_start
+    
+    # Sync Logic: T_client = T_server + (RTT / 2)
+    synchronized_time = server_time + (rtt / 2)
+    
+    print(f"Measured RTT: {round(rtt, 3)} seconds")
+    print(f"Adjusted Sync Time: {time.ctime(synchronized_time)}")
+
+simulate_cristian_algorithm()</pre>
+        <h3>Output:</h3>
+        <div class="output-box">
+kali@kali:~$ python3 sync_sim.py
+Measured RTT: 0.402 seconds
+Adjusted Sync Time: Thu Oct 24 18:20:45 2024</div>
+        <div class="mcq-container">
+            <div class="mcq-q">1. Cristian's algorithm architecture? <span class="ans">A) Master-Slave (or B Client-Server)</span></div>
+            <div class="mcq-q">2. Client adjusts clock using? <span class="ans">B) Round Trip Time (RTT)</span></div>
+            <div class="mcq-q">3. Berkeley algorithm used in? <span class="ans">B) Distributed systems</span></div>
+        </div>
+        <div class="res-container"><strong>Resolution:</strong> I simulated clock synchronization. I learned that Cristian’s algorithm compensates for network propagation delay by adding half of the RTT to the server’s timestamp.</div>
+    </div>
+
+    
+</div>
+
+</body>
+</html>
