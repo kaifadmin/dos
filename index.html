@@ -1,173 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Distributed Systems - </title>
-    <style>
-    :root { 
-        --primary: #003366; 
-        --accent: #d32f2f; 
-        --bg: #f4f7f9; 
-        --card: #ffffff; 
-        /* Dynamic spacing variables */
-        --section-margin: 40px;
-        --section-padding: 30px;
-        --container-padding: 20px;
-    }
-
-    /* Mobile adjustments for variables */
-    @media (max-width: 600px) {
-        :root {
-            --section-margin: 20px;
-            --section-padding: 15px;
-            --container-padding: 10px;
-        }
-        h2 { font-size: 22px !important; }
-        pre, .output-box, .pulses-box { padding: 12px !important; font-size: 13px !important; }
-    }
-
-    body { 
-        font-family: 'Segoe UI', Tahoma, Arial, sans-serif; 
-        background: var(--bg); 
-        color: #333; 
-        line-height: 1.6; 
-        padding: var(--container-padding); 
-        margin: 0;
-    }
-
-    .container { 
-        max-width: 950px; 
-        margin: auto; 
-    }
-
-    header { 
-        text-align: center; 
-        background: var(--primary); 
-        color: white; 
-        padding: var(--section-padding); 
-        border-radius: 10px; 
-        margin-bottom: var(--section-margin); 
-        box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
-    }
-
-    .prac-section { 
-        background: var(--card); 
-        margin-bottom: var(--section-margin); 
-        padding: var(--section-padding); 
-        border-radius: 12px; 
-        box-shadow: 0 5px 15px rgba(0,0,0,0.05); 
-        border-left: 8px solid var(--primary); 
-        page-break-after: always; 
-    }
-
-    h2 { 
-        color: var(--primary); 
-        border-bottom: 2px solid #eee; 
-        padding-bottom: 10px; 
-        margin-top: 0; 
-        font-size: 26px; 
-    }
-
-    h3 { 
-        color: var(--accent); 
-        margin-top: 20px; 
-        font-size: 18px; 
-        text-transform: uppercase; 
-        border-left: 4px solid var(--accent); 
-        padding-left: 10px; 
-    }
-
-    .pulses-box, .mcq-container, .res-container { 
-        padding: 15px; 
-        border-radius: 8px; 
-        margin: 15px 0; 
-    }
-
-    .pulses-box { background: #eef2f7; font-size: 14px; border: 1px solid #ccd6e0; }
-
-    pre { 
-        background: #1e1e1e; 
-        color: #d4d4d4; 
-        padding: 15px; 
-        border-radius: 8px; 
-        overflow-x: auto; 
-        font-family: 'Consolas', monospace; 
-        font-size: 14px; 
-        border-left: 5px solid #4ec9b0; 
-        margin: 15px 0; 
-    }
-
-    .output-box { 
-        background: #f9f9f9; 
-        border: 2px dashed #003366; 
-        padding: 15px; 
-        margin: 15px 0; 
-        font-family: 'Courier New', monospace; 
-        font-weight: bold; 
-        color: #004d40; 
-        white-space: pre-wrap; 
-        font-size: 15px; 
-    }
-
-    .mcq-container { background: #fff9c4; border: 1px solid #fbc02d; }
-    .mcq-q { margin-bottom: 8px; font-weight: bold; }
-    .ans { color: #2e7d32; text-decoration: underline; }
-    .res-container { background: #e8f5e9; border-left: 5px solid #2e7d32; font-style: italic; }
-
-    footer { 
-        text-align: center; 
-        padding: 20px; 
-        color: #777; 
-        font-size: 12px; 
-    }
-.download-container {
-    text-align: center;
-    margin: 40px 0;
-}
-
-.btn-download {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--primary);
-    color: white !important; /* Ensure text stays white */
-    padding: 14px 28px;
-    font-size: 16px;
-    font-weight: bold;
-    text-decoration: none;
-    border-radius: 50px; /* Rounded pill shape */
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0, 51, 102, 0.3);
-    border: 2px solid transparent;
-}
-
-.btn-download:hover {
-    background-color: #002244; /* Darker shade of your primary */
-    transform: translateY(-3px); /* Lift effect */
-    box-shadow: 0 6px 20px rgba(0, 51, 102, 0.4);
-}
-
-.btn-download:active {
-    transform: translateY(0);
-}
-
-/* Icon style (optional) */
-.btn-download span {
-    margin-right: 10px;
-    font-size: 20px;
-}
-
-@media (max-width: 600px) {
-    .btn-download {
-        width: 100%; /* Full width on mobile for easier clicking */
-        padding: 12px 20px;
-    }
-}
-
-</style>
-
-</head>
 <body>
 
 <div class="container">
@@ -226,16 +58,9 @@ kali@linux:~$ netstat -tuln
 Active Internet connections (only servers)
 Proto Recv-Q Send-Q Local Address           Foreign Address         State      
 tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN     
+        
         </div>
-        <div class="mcq-container">
-            <div class="mcq-q">1. Which command is used to display the system's network name? <span class="ans">c) hostname</span></div>
-            <div class="mcq-q">2. Which command shows detailed interface info in modern Linux? <span class="ans">b) ip a</span></div>
-            <div class="mcq-q">3. What does the ping command test? <span class="ans">c) Connectivity between two hosts</span></div>
-            <div class="mcq-q">4. Which command displays the route taken by packets? <span class="ans">c) traceroute</span></div>
-            <div class="mcq-q">5. Which command is used to view active network connections? <span class="ans">c) netstat</span></div>
-        </div>
-        <div class="res-container"><strong>Resolution:</strong> In this practical, I learned to use core networking utilities to identify system parameters, verify connectivity, and monitor active services on a Linux system.</div>
-    </div>
+   
 
     <!-- PRACTICAL 2 -->
     <div class="prac-section">
@@ -280,14 +105,7 @@ Client message: hello from client
 kali@linux:~$ python3 client.py
 server response: hello from server
         </div>
-        <div class="mcq-container">
-            <div class="mcq-q">1. Which protocol is used in the given client-server program? <span class="ans">c) TCP</span></div>
-            <div class="mcq-q">2. Which function is used by the server to wait for client connections? <span class="ans">c) accept()</span></div>
-            <div class="mcq-q">3. Which address is 127.0.0.1 known as? <span class="ans">c) Loopback address</span></div>
-            <div class="mcq-q">4. Which socket type is used for TCP communication in Python? <span class="ans">c) SOCK_STREAM</span></div>
-        </div>
-        <div class="res-container"><strong>Resolution:</strong> Successfully implemented a TCP client-server application. I learned the sequence of socket operations (bind, listen, accept) required to establish reliable communication.</div>
-    </div>
+        
 
     <!-- PRACTICAL 3 -->
     <div class="prac-section">
@@ -319,13 +137,7 @@ kali@linux:~$ cat ~/my_data
 Shared Resource Content
 (Accessed via virtual link without knowing the absolute physical path)
         </div>
-        <div class="mcq-container">
-            <div class="mcq-q">1. Which Linux command is used to create a symbolic link? <span class="ans">c) ln -s</span></div>
-            <div class="mcq-q">2. Location transparency means: <span class="ans">c) File location can change without user noticing</span></div>
-            <div class="mcq-q">3. Replication transparency ensures: <span class="ans">c) Multiple copies exist but user sees one logical file</span></div>
-        </div>
-        <div class="res-container"><strong>Resolution:</strong> I learned that symbolic links effectively hide physical paths from the user, demonstrating transparency in distributed systems.</div>
-    </div>
+        
 
     <!-- PRACTICAL 4 -->
     <div class="prac-section">
@@ -365,13 +177,7 @@ else:
 [Child] Reading data from pipe...
 [Child Received]: Data from parent process via Pipe.
         </div>
-        <div class="mcq-container">
-            <div class="mcq-q">1. What does IPC stand for? <span class="ans">c) Inter Process Communication</span></div>
-            <div class="mcq-q">2. Which IPC mechanism allows communication only between related processes? <span class="ans">c) Pipe</span></div>
-            <div class="mcq-q">3. In Unix/Linux, a pipe is: <span class="ans">b) Unidirectional</span></div>
-        </div>
-        <div class="res-container"><strong>Resolution:</strong> I successfully established a communication channel between a parent and child process using a pipe, observing how data flows through system file descriptors.</div>
-    </div>
+        
     <!-- PRACTICAL 5 -->
     <div class="prac-section">
         <h2>PRACTICAL-5</h2>
@@ -417,19 +223,280 @@ except BlockingIOError:
 
 [ASYNC] Child: Checking for data immediately (Non-blocking)...
 [ASYNC] Result: No data available. Child continues other execution tasks.</div>
-        <div class="mcq-container">
-            <div class="mcq-q">1. Synchronous communication means: <span class="ans">B) Receiver waits until message arrives</span></div>
-            <div class="mcq-q">2. Which type of communication is blocking in nature? <span class="ans">C) Synchronous</span></div>
-            <div class="mcq-q">3. In asynchronous communication, the receiver: <span class="ans">C) Continues execution without waiting</span></div>
-        </div>
-        <div class="res-container"><strong>Resolution:</strong> I successfully distinguished between blocking and non-blocking calls. Synchronous communication ensures data readiness before proceeding, while asynchronous allows process concurrency.</div>
-<div class="download-container">
-    <a href="dos6-14.pdf" download="Practicals_6_to_14.pdf" class="btn-download">
-        <span>📄</span> Go to Practicals 6 to 14 (Download PDF)
-    </a>
-</div>
+        
     </div>
+<pre>This is the complete set of Python code extracted from all the practicals in the provided document (Practical 6 to Practical 14).
 
+I have corrected all the handwritten typos (e.g., "impart" to import, "sewer" to server, "appent" to append) and fixed syntax errors to ensure the code is fully functional.
+
+Practical 6 & 7: Simple RPC System (XML-RPC)
+
+These two practicals are combined as they both demonstrate the same XML-RPC concept.
+
+Server Code (server.py)
+
+from xmlrpc.server import SimpleXMLRPCServer
+
+# Initialize Server
+server = SimpleXMLRPCServer(("localhost", 8000))
+print("Server is listening on port 8000...")
+
+# Define functions to be called remotely
+def add(x, y): return x + y
+def subtract(x, y): return x - y
+def multiply(x, y): return x * y
+def divide(x, y):
+    if y == 0:
+        return "Error: Division by zero!"
+    return x / y
+
+def square(n): return n * n
+def cube(n): return n * n * n
+def greet(name): return f"Hello {name}"
+
+# Register functions
+server.register_function(add, "add")
+server.register_function(subtract, "subtract")
+server.register_function(multiply, "multiply")
+server.register_function(divide, "divide")
+server.register_function(square, "square")
+server.register_function(cube, "cube")
+server.register_function(greet, "greet")
+
+# Run the server
+server.serve_forever()
+
+Client Code (client.py)
+
+
+import xmlrpc.client
+
+# Connect to the server
+proxy = xmlrpc.client.ServerProxy("http://localhost:8000/")
+
+print(f"Addition (10,5): {proxy.add(10, 5)}")
+print(f"Subtraction (10,5): {proxy.subtract(10, 5)}")
+print(f"Multiplication (10,5): {proxy.multiply(10, 5)}")
+print(f"Division (10,5): {proxy.divide(10, 5)}")
+print(f"Square of 4: {proxy.square(4)}")
+print(f"Cube of 3: {proxy.cube(3)}")
+print(f"Greeting: {proxy.greet('Student')}")
+Practical 8: Cristian’s and Berkeley Algorithms
+
+import time
+import random
+
+# --- 1. Cristian's Algorithm ---
+def cristian_algorithm():
+    print("--- Cristian's Algorithm ---")
+    t0 = time.time()
+    time.sleep(random.uniform(0.1, 0.5)) # Simulated network delay
+    server_clock = time.time()
+    t1 = time.time()
+    
+    round_trip_delay = t1 - t0
+    adjusted_time = server_clock + (round_trip_delay / 2)
+    
+    print(f"Server Clock: {server_clock}")
+    print(f"Adjusted Client Time: {adjusted_time}\n")
+
+# --- 2. Berkeley Algorithm ---
+def berkeley_algorithm():
+    print("--- Berkeley Algorithm ---")
+    clocks = [time.time() + random.randint(-5, 5) for _ in range(3)]
+    print(f"Initial Clock Times: {clocks}")
+    
+    average_time = sum(clocks) / len(clocks)
+    print(f"Average Time: {average_time}")
+    
+    print("Adjusted Clock Times:")
+    for i, clock in enumerate(clocks):
+        clocks[i] = average_time
+        print(f"Machine {i+1}: {clocks[i]}")
+
+cristian_algorithm()
+berkeley_algorithm()
+Practical 9: System Time Offsets Across Nodes
+
+import time
+import random
+
+nodes = {
+    "node 1": time.time() + random.randint(-5, 5),
+    "node 2": time.time() + random.randint(-5, 5),
+    "node 3": time.time() + random.randint(-5, 5),
+    "node 4": time.time() + random.randint(-5, 5)
+}
+
+print("Local Times of nodes:")
+for node, t in nodes.items():
+    print(f"{node}: {t}")
+
+reference_time = sum(nodes.values()) / len(nodes)
+print(f"\nReference Time (Average): {reference_time}")
+
+print("\nTime Offsets:")
+for node, t in nodes.items():
+    offset = reference_time - t
+    status = "slow" if offset > 0 else "fast" if offset < 0 else "synchronized"
+    print(f"{node} offset: {offset} -> clock is {status}")
+Practical 10: Bully Algorithm
+
+import random
+
+processes = [1, 2, 3, 4, 5]
+coordinator = 5
+print(f"Initial Coordinator: {coordinator}")
+
+# Failure
+processes.remove(coordinator)
+print("Coordinator Failed!")
+
+initiator = 2
+print(f"Process {initiator} starts election")
+
+higher_processes = [p for p in processes if p > initiator]
+print(f"Election message sent to: {higher_processes}")
+
+if higher_processes:
+    new_coordinator = max(higher_processes)
+else:
+    new_coordinator = initiator
+
+print(f"New coordinator is: {new_coordinator}")
+Practical 11: Round Robin Scheduling
+
+def round_robin(processes, burst_time, time_quantum):
+    n = len(processes)
+    remaining_time = list(burst_time)
+    current_time = 0
+    
+    while True:
+        done = True
+        for i in range(n):
+            if remaining_time[i] > 0:
+                done = False
+                if remaining_time[i] > time_quantum:
+                    current_time += time_quantum
+                    remaining_time[i] -= time_quantum
+                    print(f"{processes[i]} executed for {time_quantum} units")
+                else:
+                    current_time += remaining_time[i]
+                    print(f"{processes[i]} executed for {remaining_time[i]} units")
+                    remaining_time[i] = 0
+        if done:
+            break
+    print(f"Total time: {current_time}")
+
+# Input
+proc = ["P1", "P2", "P3"]
+burst = [10, 5, 8]
+quantum = 3
+round_robin(proc, burst, quantum)
+Practical 12: Ricart-Agrawala Algorithm
+
+import multiprocessing
+import time
+import random
+
+def process(pid, total_processes, request_queue):
+    logical_clock = 0
+    time.sleep(random.randint(1, 3))
+    logical_clock += 1
+    timestamp = logical_clock
+    
+    # Send requests
+    for i in range(total_processes):
+        if i != pid:
+            request_queue.put(("Request", timestamp, pid))
+    
+    replies = 0
+    while replies < total_processes - 1:
+        msg = request_queue.get()
+        if msg[0] == "OK" and msg[2] == pid:
+            replies += 1
+            
+    print(f"Process {pid} entering Critical Section")
+    time.sleep(2)
+    print(f"Process {pid} exiting Critical Section")
+    
+    # Send OK to others
+    for i in range(total_processes):
+        if i != pid:
+            request_queue.put(("OK", logical_clock, i))
+
+if __name__ == "__main__":
+    total = 3
+    q = multiprocessing.Queue()
+    procs = []
+    for p_id in range(total):
+        p = multiprocessing.Process(target=process, args=(p_id, total, q))
+        procs.append(p)
+        p.start()
+        
+    for p in procs:
+        p.join()
+Practical 13: Simple HDFS Concept Simulation
+
+file_data = "This is a sample file stored in distributed blocks!"
+block_size = 10
+
+# Fixed syntax for block division
+blocks = [file_data[i : i + block_size] for i in range(0, len(file_data), block_size)]
+
+print("File divided into blocks:\n")
+for i, block in enumerate(blocks):
+    print(f"Block {i+1}: {block}")
+Practical 14: Wait-For Graph (Deadlock Detection)
+
+from collections import defaultdict
+
+class WaitForGraph:
+    def __init__(self):
+        self.graph = defaultdict(list)
+
+    def add_edge(self, p1, p2):
+        self.graph[p1].append(p2)
+
+    def dfs(self, node, visited, rec_stack):
+        visited.add(node)
+        rec_stack.add(node)
+        
+        for neighbor in self.graph[node]:
+            if neighbor not in visited:
+                if self.dfs(neighbor, visited, rec_stack):
+                    return True
+            elif neighbor in rec_stack:
+                return True
+        
+        rec_stack.remove(node)
+        return False
+
+    def detect_deadlock(self):
+        visited = set()
+        rec_stack = set()
+        for process in list(self.graph):
+            if process not in visited:
+                if self.dfs(process, visited, rec_stack):
+                    return True
+        return False
+
+# Usage
+wfg = WaitForGraph()
+n = int(input("Enter number of edges: "))
+print("Enter in format: P1 P2")
+for _ in range(n):
+    p1, p2 = input().split()
+    wfg.add_edge(p1, p2)
+
+print("\nWait-For Graph:")
+for proc in wfg.graph:
+    print(f"{proc} -> {wfg.graph[proc]}")
+
+if wfg.detect_deadlock():
+    print("Deadlock Detected")
+else:
+    print("No Deadlock")</pre>
     
     </div>
 
